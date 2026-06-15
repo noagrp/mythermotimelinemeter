@@ -11,7 +11,7 @@
     "id": 2,
     "datetime": "2026-06-15T22:20",
     "title": "UrProfile - Hash Routing",
-    "desc": "Retired the 404 rerouying. Implemented hash routing. Link looks like this #/username. Link below to create a profile.Try it out.",
+    "desc": "Retired the 404 rerouting. Implemented hash routing. Link looks like this #/username. Link below to create profile. Try it out.",
     "mediaLink": "https://noagrp.github.io/urprofile"
   }
 ]
