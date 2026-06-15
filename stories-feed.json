@@ -10,8 +10,8 @@
   {
     "id": 2,
     "datetime": "2026-06-15T22:20",
-    "title": "UrProfile - Hash Routing",
-    "desc": "Retired the 404 rerouting. Implemented hash routing. Link looks like this #/username. Link below to create profile. Try it out.",
+    "title": "UrProfile Update - Hash Routing",
+    "desc": "Out with the old 404 reroutes, in with hash routing! Your profile links will now look like #/username—making them 100% stable on static hosting. Hit the link below to create your identity card and test it out. 👇",
     "mediaLink": "https://noagrp.github.io/urprofile"
   }
 ]
