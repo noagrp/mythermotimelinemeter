@@ -2,8 +2,16 @@
   {
     "id": 1,
     "datetime": "2026-06-15T10:30",
-    "title": "Launch of the Live Public Feed",
-    "desc": "Successfully transitioned the ThermoTimelineMeter from an offline browser log into a live stream feed powered entirely by GitHub storage. Testing text wrapping and layout responsiveness directly from mobile.",
-    "mediaLink": "https://noagrp.github.io/mythermotimelinemeter"
-  }
+    "title": "ThermoTimelineMeter - from offline to online",
+    "desc": "Successfully transitioned the ThermoTimelineMeter from an offline browser log into a live stream feed powered entirely by GitHub storage. Link below for the offline version.",
+    "mediaLink": "https://noagrp.github.io/thermotimelinemeter"
+  },
+
+  {
+    "id": 2,
+    "datetime": "2026-06-15T22:20",
+    "title": "UrProfile - Hash Routing",
+    "desc": "Retired the 404 rerouying. Implemented hash routing. Link looks like this #/username. Link below to create a profile.Try it out.",
+    "mediaLink": "https://noagrp.github.io/urprofile"
+  }
 ]
