@@ -386,11 +386,13 @@
 
     <header>
         <h1 id="siteTitle">ThermoTimelineMeter</h1>
-        <div class="theme-selector">
-            <button onclick="setTheme('very-black')">Black</button>
-            <button onclick="setTheme('white')">White</button>
-            <button onclick="setTheme('soft-rainbow')">Rainbow</button>
-        </div>
+<div class="theme-selector">
+    <select onchange="setTheme(this.value)">
+        <option value="very-black">Black</option>
+        <option value="white">White</option>
+        <option value="soft-rainbow">Rainbow</option>
+    </select>
+</div>
     </header>
 
     <div class="timeline-outer-wrapper">
