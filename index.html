@@ -402,12 +402,12 @@
     </div>
 
     <script>
-        // Fetches data directly from your repository file context path
-        const DATA_SOURCE_URL = "stories-feed.json";
+        // Updated to use your Google Apps Script API
+        const DATA_SOURCE_URL = "https://script.google.com/macros/s/AKfycbwxymKxT83m9q4iXaIkLvUxzmheKbTpFQbl-U5D7PhasBQRZFWfpnffP5S4qeOok4META/exec";
 
         let stories = [];
         let itemsRenderedCount = 0;
-        const CHUNK_SIZE = 15; // Renders 15 milestones at a time
+        const CHUNK_SIZE = 15; 
 
         window.onload = function() {
             const storedTheme = localStorage.getItem('thermometer_public_theme');
@@ -425,8 +425,9 @@
         async function fetchAndRenderFeed() {
             const statusMessage = document.getElementById('statusMessage');
             try {
-                const response = await fetch(DATA_SOURCE_URL, { cache: "no-store" });
-                if (!response.ok) throw new Error("File not found");
+                // Added a cache-buster query string to ensure live updates
+                const response = await fetch(DATA_SOURCE_URL + "?nocache=" + new Date().getTime());
+                if (!response.ok) throw new Error("Could not fetch data");
                 
                 stories = await response.json();
                 
@@ -435,16 +436,13 @@
                     return;
                 }
 
-                // Automatically sorts data elements so newest entries are rendered up top
                 stories.sort((a, b) => {
                     return new Date(b.datetime).getTime() - new Date(a.datetime).getTime();
                 });
 
-                // Clear visual message container
                 document.getElementById('timeline').innerHTML = '';
                 itemsRenderedCount = 0;
                 
-                // Render first initial batch slice
                 renderNextBatchChunk();
             } catch (err) {
                 statusMessage.innerText = "Failed to load timeline entries stream.";
@@ -479,7 +477,6 @@
         function renderNextBatchChunk() {
             const timeline = document.getElementById('timeline');
             
-            // Remove previous bulb if it exists to append it cleanly at the bottom later
             const oldBulb = timeline.querySelector('.thermometer-base-bulb');
             if (oldBulb) oldBulb.remove();
 
@@ -520,7 +517,6 @@
 
             itemsRenderedCount = nextBatchLimit;
 
-            // Append base visual mercury bulb at the very end if entries exist
             if (stories.length > 0) {
                 const bulbDiv = document.createElement('div');
                 bulbDiv.className = 'thermometer-base-bulb';
@@ -531,7 +527,6 @@
         function handleTimelineScroll() {
             const box = document.getElementById('scrollBox');
             
-            // Check if user scrolled within 150px of the bottom boundary line
             if (box.scrollTop + box.clientHeight >= box.scrollHeight - 150) {
                 if (itemsRenderedCount < stories.length) {
                     renderNextBatchChunk();
@@ -540,7 +535,8 @@
         }
 
         function escapeHtml(text) {
-            return text
+            if (!text) return "";
+            return String(text)
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;")
